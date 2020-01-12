@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Admin, Resource, ListGuesser } from "react-admin";
+import simpleRestProvider from "ra-data-simple-rest";
+import { createMuiTheme } from "@material-ui/core/styles";
+
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import CustomLoginPage from "./components/LoginPage/LoginPage";
+
+import "./App.css";
+import authProvider from "./authProvider";
+
+const dataProvider = simpleRestProvider("https://domain.tld/api");
+const theme = createMuiTheme({
+  palette: {
+    type: "dark" // Switching the dark mode on is a single property value change.
+  },
+  typography: {
+    fontFamily: "Titillium Web"
+  }
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Admin
+      title="Grievences Admin Portal"
+      dataProvider={dataProvider}
+      theme={theme}
+      loginPage={CustomLoginPage}
+      authProvider={authProvider}
+      dashboard={AdminDashboard}
+    >
+      <Resource name="Grievences" list={ListGuesser} />
+      <Resource name="Departments" list={ListGuesser} />
+    </Admin>
   );
 }
 
