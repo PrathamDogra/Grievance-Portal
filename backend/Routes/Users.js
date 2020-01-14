@@ -53,5 +53,7 @@ router.delete("/delete/:id", (req, res) => {
     .then(() => res.json("User info Deleted"))
     .catch(err => res.status(400).json(err));
 });
+// //For User Login
+// rou
 
 module.exports = router;

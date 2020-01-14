@@ -4,7 +4,11 @@ const Complaint = require("../models/complaintSchema");
 
 router.get("/", (req, res) => {
   Complaint.find()
-    .then(complaints => res.status(200).json(complaints))
+    .then(complaints => {
+      res.setHeader("Access-Control-Expose-Headers", "Content-Range");
+      // res.setHeader("'Content-Range','bytes : 0-9/*'");
+      res.status(200).json(complaints);
+    })
     .catch(err => res.status(400).json(err));
 });
 router.get("/:id", (req, res) => {
@@ -19,12 +23,14 @@ router.post("/add", (req, res) => {
   const body = req.body.body;
   const flag = req.body.flag;
   const department = req.body.department;
+  const username = req.body.username;
 
   const newComplaint = new Complaint({
     title,
     body,
     flag,
-    department
+    department,
+    username
   });
   newComplaint
     .save()
@@ -38,6 +44,7 @@ router.put("/update/:id", (req, res) => {
     complaint.body = req.body.body;
     complaint.flag = req.body.flag;
     complaint.department = req.body.department;
+    complaint.username = req.body.username;
 
     complaint
       .save()

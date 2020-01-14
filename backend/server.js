@@ -8,7 +8,11 @@ app.use(cors());
 
 const userRoute = require("./Routes/Users");
 const complaintRoute = require("./Routes/Complaint");
-
+app.use((req, res, next) => {
+  res.append("Access-Control-Expose-Headers", "Content-Range");
+  res.append("Content-Range", "bytes:0-9/*");
+  next();
+});
 app.use("/users", userRoute);
 app.use("/complaint", complaintRoute);
 const uri = process.env.ATLAS_URI;

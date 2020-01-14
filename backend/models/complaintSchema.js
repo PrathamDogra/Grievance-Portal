@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 const complaintSchema = new Schema(
   {
     title: {
-      unique: false,
       type: String,
       required: true
     },
+
     body: {
       type: String,
       required: true
@@ -16,6 +16,10 @@ const complaintSchema = new Schema(
       required: true
     },
     department: {
+      type: String,
+      required: true
+    },
+    creator: {
       type: String,
       required: true
     }

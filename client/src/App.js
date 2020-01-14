@@ -29,7 +29,7 @@ function App() {
       authProvider={authProvider}
       dashboard={AdminDashboard}
     >
-      <Resource name="Grievences" list={ListGuesser} />
+      <Resource name="Grievances" list={ListGuesser} />
       <Resource name="Departments" list={ListGuesser} />
     </Admin>
   );

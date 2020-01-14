@@ -3,11 +3,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     username: {
-      unique: true,
       type: String,
-      required: true,
-      trim: true,
-      minlength: 3
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
     },
     password: {
       type: String,
@@ -16,6 +17,10 @@ const userSchema = new Schema(
     type: {
       type: Number,
       required: true
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false
     }
   },
   {
