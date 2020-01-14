@@ -48,20 +48,23 @@ export default class AdminDashboard extends Component {
     return (
       <div>
         <div className="App">
-          <h3 style={{ color: "white", fontWeight: "bold" }}>
+        <header className="App-header">
+          <h3 style={{ color: "white", fontWeight: "bold", paddingTop:"1%" }}>
             G R I E V A N C E S
           </h3>
-          <header className="App-header">
+          
             {/* <p>This page will contain charts and graphs.</p> */}
 
             <Timeline data={TeamData} />
-            {/* <h5 className="pt-4" style={{textAlign:"left"}}>
-         Grienvences can be monitored monthly-wise to increase the efficiency of departments. Minimum complaint<br/> threshold can be kept to increase the quality of service.
+            <div className="p-4">
+            <h5 className="pt-4" style={{textAlign:"left"}}>
+         Grievances can be monitored monthly-wise to increase the efficiency of departments. Minimum complaint<br/> threshold can be kept to increase the quality of service.
          
-        </h5> */}
+        </h5>
+        </div>
             <Container style={styles.containerClass}>
               <h3 style={styles.boldClass}>
-                TOTAL <span style={styles.secondaryColorClass}>STATS</span>
+                O V E R V I E W
               </h3>
              
               <Row className="justify-content-md-center">
@@ -88,17 +91,21 @@ export default class AdminDashboard extends Component {
                 </Col>
               </Row>
             </Container>
-          </header>
-          <footer>
-            <a
+            <Container>
+              
+            </Container>
+            <footer>
+            <h6><a
               className="App-link"
               href="http://msit.in/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Team-BaseUX
-            </a>
+            </a></h6>
           </footer>
+          </header>
+         
         </div>
       </div>
     );
