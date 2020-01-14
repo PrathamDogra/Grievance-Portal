@@ -1,15 +1,16 @@
 import React from "react";
-import { Admin, Resource, ListGuesser, fetchUtils } from "react-admin";
+import { Admin, Resource } from "react-admin";
 import { createMuiTheme } from "@material-ui/core/styles";
-import jsonServerProvider from "ra-data-json-server";
-import simpleRestProvider from "ra-data-simple-rest";
 
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import CustomLoginPage from "./components/LoginPage/LoginPage";
+import { dataProvider } from "./DataProvider/DataProvider";
 
 import "./App.css";
 import authProvider from "./authProvider";
+
 import { PostCreate, PostEdit, PostList } from "./components/Grievances/users";
+import { UserCreate, UserList, UserEdit } from "./components/Users/users";
 
 const theme = createMuiTheme({
   palette: {
@@ -19,39 +20,6 @@ const theme = createMuiTheme({
     fontFamily: "Titillium Web"
   }
 });
-
-// const fetchJson = (url, options = {}) => {
-//   if (!options.headers) {
-//       options.headers = new Headers({ Accept: 'application/json' });
-//   }
-//   // add your own headers here
-//   options.headers.set('X-Total-Count', '319');
-//   return fetchUtils.fetchJson(url, options);
-// }
-
-// const dataProvider = jsonServerProvider("https://grievance-app.herokuapp.com", fetchJson);
-// console.log(dataProvider);
-// dataProvider
-//     .getOne('complaint', { id: '5e1ca3e252a3090024a59852' })
-//     .then(response => {
-//         console.log(response.data); // { id: 123, title: "hello, world" }
-//     });
-
-// const httpClient = (url, options = {}) => {
-//   if (!options.headers) {
-//       options.headers = new Headers({ Accept: 'application/json' });
-//   }
-//   // add your own headers here
-//   options.headers.set('Content-Range', '4063');
-//   return fetchUtils.fetchJson(url, options);
-// };
-
-const dataProvider = simpleRestProvider("https://grievance-app.herokuapp.com");
-dataProvider
-  .getOne("complaint", { id: "5e1ca3e252a3090024a59852" })
-  .then(response => {
-    console.log(response.data); // { id: 123, title: "hello, world" }
-  });
 
 function App() {
   return (
@@ -69,7 +37,12 @@ function App() {
         edit={PostEdit}
         create={PostCreate}
       />
-      <Resource name="users" list={ListGuesser} />
+      <Resource
+        name="users"
+        list={UserList}
+        edit={UserEdit}
+        create={UserCreate}
+      />
     </Admin>
   );
 }
