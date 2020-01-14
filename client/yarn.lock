@@ -9159,6 +9159,14 @@ ra-core@^3.1.2:
     recompose "~0.26.0"
     reselect "~3.0.0"
 
+ra-data-json-server@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.1.2.tgz#a768a46a3b3b4dae9c3058244ae87a212e7b3497"
+  integrity sha512-OmWiwcgwd5f/7/CWomqAvrnG2wm5Pv/skQ80eDpEIJ3isTSWRJFrP0vMWgSeHsJ9K6B1gP/mu04o5G7fZpsWfg==
+  dependencies:
+    query-string "^5.1.1"
+    ra-core "^3.1.2"
+
 ra-data-simple-rest@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-3.1.0.tgz#55912138d5f9f25206ea6b39c33b8f80040a39cd"
